@@ -12,36 +12,46 @@
       }
       canvas {
         display: block;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      .link {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+      }
+      .link img {
+        height: 35px;
       }
     </style>
   </head>
   <body>
+    <div class="link">
+      <a href="https://www.linkedin.com/in/stevengandso/"
+        ><img src="https://cdn.cdnlogo.com/logos/l/66/linkedin-icon.svg" alt=""
+      /></a>
+    </div>
     <canvas></canvas>
     <script>
-      // Initialising the canvas
       var canvas = document.querySelector("canvas"),
         ctx = canvas.getContext("2d");
 
-      // Setting the width and height of the canvas
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      // Setting up the letters
       var letters =
         "ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ";
       letters = letters.split("");
 
-      // Setting up the columns
       var fontSize = 10,
         columns = canvas.width / fontSize;
 
-      // Setting up the drops
       var drops = [];
       for (var i = 0; i < columns; i++) {
         drops[i] = 1;
       }
 
-      // Setting up the draw function
       function draw() {
         ctx.fillStyle = "rgba(0, 0, 0, .1)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -56,7 +66,6 @@
         }
       }
 
-      // Loop the animation
       setInterval(draw, 33);
     </script>
     <script
