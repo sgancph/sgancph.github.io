@@ -7,67 +7,74 @@
         margin: 0;
         padding: 0;
       }
+
       body {
-        background-color: #000;
+        background-color: #fff;
+        font-family: system-ui, sans-serif;
+        font-size: 18px;
+        margin: 30px;
       }
-      canvas {
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .header {
+        font-weight: 700;
+      }
+
+      h1 {
         display: block;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+        font-size: 2.2em;
+        margin: 0;
       }
-      .link {
-        position: absolute;
-        bottom: 15px;
-        right: 15px;
+
+      p {
+        margin: 20px 0;
       }
-      .link img {
-        height: 35px;
+
+      ul {
+        margin: 0;
+        list-style: none;
+        display: flex;
+      }
+
+      ul > li {
+        margin-right: 16px;
+      }
+
+      /* Medium screen devices (768px and above) */
+      @media only screen and (min-width: 768px) {
+        body {
+          margin: 100px;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #000;
+          color: #fff;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="link">
-      <a href="https://www.linkedin.com/in/stevengandso/"
-        ><img src="https://cdn.cdnlogo.com/logos/l/66/linkedin-icon.svg" alt=""
-      /></a>
+    <div class="header">
+      <h1>Steven Gandsø</h1>
+      <p>
+        Product Lead at <a href="https://bcgdv.com">BCGDV</a>. Based in Hong
+        Kong.
+      </p>
+      <ul>
+        <li><a href="https://linkedin.com/in/stevengandso">LinkedIn</a></li>
+        <li><a href="https://github.com/sgancph">GitHub</a></li>
+      </ul>
     </div>
-    <canvas></canvas>
-    <script>
-      var canvas = document.querySelector("canvas"),
-        ctx = canvas.getContext("2d");
-
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      var letters =
-        "ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ";
-      letters = letters.split("");
-
-      var fontSize = 10,
-        columns = canvas.width / fontSize;
-
-      var drops = [];
-      for (var i = 0; i < columns; i++) {
-        drops[i] = 1;
-      }
-
-      function draw() {
-        ctx.fillStyle = "rgba(0, 0, 0, .1)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        for (var i = 0; i < drops.length; i++) {
-          var text = letters[Math.floor(Math.random() * letters.length)];
-          ctx.fillStyle = "#0f0";
-          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-          drops[i]++;
-          if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
-            drops[i] = 0;
-          }
-        }
-      }
-
-      setInterval(draw, 33);
-    </script>
     <script
       data-goatcounter="https://steven.goatcounter.com/count"
       async
